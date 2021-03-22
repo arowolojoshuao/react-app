@@ -1,57 +1,29 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  state = {
-    count: 0,
-  };
-
   render() {
+    const { counter, onIncrement, onDecrement, onDelete } = this.props;
+
+    const btnStyle = "btn btn-secondary btn-sm m-2 btn-warning";
+    const btnDangerStyle = btnStyle + " btn-danger";
+
     return (
       <div>
-        <span className={this.setBadgeStyle()}>{this.state.count}</span>
-        <button
-          className="btn btn-secondary btn-sm m-2"
-          onClick={() => this.onIncrement()}
-        >
+        <span className="badge badge-primary m-2 rounded-pill">
+          {counter.value}
+        </span>
+        <button className={btnStyle} onClick={() => onIncrement(counter)}>
           +
         </button>
-        <button
-          className="btn btn-secondary btn-sm m-2"
-          onClick={() => this.onDecrement()}
-        >
+        <button className={btnStyle} onClick={() => onDecrement(counter)}>
           -
         </button>
-        <button
-          className="btn btn-secondary btn-sm m-2"
-          onClick={() => this.onDelete({ id: 10 })}
-        >
+        <button className={btnDangerStyle} onClick={() => onDelete(counter)}>
           Delete
         </button>
       </div>
     );
   }
-
-  setBadgeStyle() {
-    let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
-    return classes;
-  }
-
-  onIncrement = () => {
-    this.setState({
-      count: this.state.count + 1,
-    });
-  };
-
-  onDecrement = () => {
-    if (this.state.count > 0) {
-      this.setState({
-        count: this.state.count - 1,
-      });
-    }
-  };
-
-  onDelete = () => {};
 }
 
 export default Counter;

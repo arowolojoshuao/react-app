@@ -1,11 +1,15 @@
+import React from 'react';
 import './App.css';
-import Counter from './components/counter';
+import CounterList from './components/counterList';
+import NavBar from './components/navBar';
 
 function App() {
   return (
-    <Counter />
+    <React.Fragment>
+      <NavBar />
+      <CounterList />
+    </React.Fragment>
   );
 }
 
 export default App;
-
